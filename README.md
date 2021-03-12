@@ -1,5 +1,7 @@
 Tutorial: https://docs.microsoft.com/pt-br/dotnet/core/testing/unit-testing-with-nunit
 
+Projeto de aprendizado para uma webapi com Entity Framework usando MySql, C#, .NET e NLog baseado nos seguintes tuturiais:
+
 1º - criar dirtório chamado "Csharp_WebAPI_NUnit_EF_MySql_NLog".
 
 2º - entrar na pasta:
@@ -95,7 +97,34 @@ DEPENDENCIAS:
 
     dotnet add package NLog --version 4.7.8 (for NLog)
 
-    
+
+parte 1: https://medium.com/@gedanmagalhaes/criando-uma-api-rest-com-asp-net-core-3-1-entity-framework-mysql-423c00e3b58e
+
+parte 2: https://medium.com/@gedanmagalhaes/criando-uma-api-rest-com-asp-net-core-3-1-entity-framework-mysql-parte-2-e969e82e5d2f
+
+HttpPost baseado neste código: https://github.com/GedanMagal/Api-Ef/blob/master/Controllers/ProductController.cs
+
+EXEMPLO DELET E PUT: https://www.entityframeworktutorial.net/efcore/delete-data-in-entity-framework-core.aspx
+
+Geração de Logs: https://github.com/NLog/NLog/wiki/Getting-started-with-ASP.NET-Core-3
+
+### PASSOS para ativar Entity Framework Core:
+
+para puxar os registros do banco de dados: ainda não temos nenhuma tabela criada. abrir o terminal do vscode e gerar nossa primeira Migration rodando o comando:
+
+(se já estiver com as migrations prontas basta pular esse passo)
+
+    dotnet ef migrations add PrimeiraMigration
+
+qualquer nome pode ser adicionado após o add. este comando gerara uma tabela no seu schema com o nome dado no DataContext, no caso a primeira tabela que criará será a de Pessoas pois foi a unica que mapeamos até o momento.
+
+depois insira o comando para criar as tabelas e também o banco de dados:
+
+    dotnet ef database update
+
+caso queira ver o processo de execução, basta rodar com o -v no final do comando
+
+
 
 # bugs para corrigir:
 
