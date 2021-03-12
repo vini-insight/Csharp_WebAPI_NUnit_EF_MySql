@@ -8,8 +8,8 @@
 
 #arquivos específicos
 internal-nlog-AspNetCore3.txt
-appsettings.json
-appsettings.Development.json
+# appsettings.json
+# appsettings.Development.json
 
 # User-specific files
 *.rsuser
