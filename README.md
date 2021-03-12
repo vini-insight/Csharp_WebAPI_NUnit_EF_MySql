@@ -1,5 +1,13 @@
 Tutorial: https://docs.microsoft.com/pt-br/dotnet/core/testing/unit-testing-with-nunit
 
+https://docs.microsoft.com/pt-br/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows
+https://docs.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder?view=dotnet-plat-ext-5.0&viewFallbackFrom=netcore-3.1
+
+
+https://buildingsteps.wordpress.com/2018/07/06/testing-entity-framework-core/
+https://www.michalbialecki.com/2020/11/28/unit-tests-in-entity-framework-core-5/
+
+
 Projeto de aprendizado para uma webapi com Entity Framework usando MySql, C#, .NET e NLog baseado nos seguintes tuturiais:
 
 1º - criar dirtório chamado "Csharp_WebAPI_NUnit_EF_MySql_NLog".

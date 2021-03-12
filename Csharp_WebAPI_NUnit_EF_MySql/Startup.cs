@@ -28,7 +28,8 @@ namespace Csharp_WebAPI_NUnit_EF_MySql
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<DataContext>(options => options.UseMySql(Configuration.GetConnectionString("myConnection")));
+            // services.AddDbContext<DataContext>(options => options.UseMySql(Configuration.GetConnectionString("myConnection")));
+            services.AddDbContext<DataContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
