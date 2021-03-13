@@ -1,8 +1,0 @@
-appsettings.json
-appsettings.Development.json
-internal-nlog-AspNetCore3.txt
-.vscode/
-obj/
-bin/
-ignoregit/
-Csharp_WebAPI_NUnit_EF_MySql_Tests/
