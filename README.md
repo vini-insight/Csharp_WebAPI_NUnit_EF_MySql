@@ -105,6 +105,10 @@ DEPENDENCIAS:
 
     dotnet add package NLog --version 4.7.8 (for NLog)
 
+    dotnet add package FluentAssertions --version 5.10.3
+
+    dotnet add package Bogus --version 33.0.2
+
 
 parte 1: https://medium.com/@gedanmagalhaes/criando-uma-api-rest-com-asp-net-core-3-1-entity-framework-mysql-423c00e3b58e
 
