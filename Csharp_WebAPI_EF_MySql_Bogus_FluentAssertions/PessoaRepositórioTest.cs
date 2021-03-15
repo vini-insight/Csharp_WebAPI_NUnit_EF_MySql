@@ -1,16 +1,16 @@
 using System;
 using Data;
 using Models;
+using NUnit.Framework;
+using FluentAssertions;
 using Bogus;
 using Bogus.Extensions.Brazil;
-using NUnit.Framework;
 
-namespace Csharp_WebAPI_EF_MySql_Bogus_NUnit.Data
+namespace Csharp_WebAPI_EF_MySql_Bogus_FluentAssertions
 {
     [TestFixture]
-    public class PessoaRepositorioTest
+    public class PessoaRepositórioTest
     {
-
         private PessoaRepositorio pr { get; set; }        
         private string[] generos = new string[2] { "M", "F" };
         private Pessoa p1, p1S; // p1S para conseguir recuperar mesma informação no BD
@@ -47,13 +47,13 @@ namespace Csharp_WebAPI_EF_MySql_Bogus_NUnit.Data
         [Test, Order(1)]
         public void GetListPessoaVaziaTest()
         {
-            CollectionAssert.IsEmpty(PessoaRepositorio.GetListPessoa());            
+            PessoaRepositorio.GetListPessoa().Should().BeEmpty();
         }
 
         [Test, Order(2)]
         public void GetPessoaTestNull()
         {
-            Assert.Null(PessoaRepositorio.GetPessoa(p1.Cpf));
+            PessoaRepositorio.GetPessoa(p1.Cpf).Should().BeNull();
         }
 
         [Test, Order(3)]
@@ -61,48 +61,47 @@ namespace Csharp_WebAPI_EF_MySql_Bogus_NUnit.Data
         {
             p1S = p1;
             ShowResults(p1);
-            Assert.IsNotNull(PessoaRepositorio.InserirNoBancoDados(p1));
+            PessoaRepositorio.InserirNoBancoDados(p1).Should().NotBeNull();
         }
-
+        
         [Test, Order(4)]
         public void GetListPessoaTest()
         {
-            CollectionAssert.IsNotEmpty(PessoaRepositorio.GetListPessoa());
+            PessoaRepositorio.GetListPessoa().Should().NotBeEmpty();
         }
 
         [Test, Order(5)]
         public void GetPessoaTest()
         {
             ShowResults(p1S);
-            Assert.IsNotNull(PessoaRepositorio.GetPessoa(p1S.Cpf));
+            PessoaRepositorio.GetPessoa(p1S.Cpf).Should().NotBeNull();
         }
-
+        
         [Test, Order(6)]
         public void AtualizarNoBancoDadosTest()
         {
             p2.Cpf = p1S.Cpf;
             ShowResults(p2);
-            Assert.IsNotNull(PessoaRepositorio.AtualizarNoBancoDados(p2));
+            PessoaRepositorio.AtualizarNoBancoDados(p2).Should().NotBeNull();
         }
 
         [Test, Order(7)]
         public void AtualizarNoBancoDadosNullTest()
         {
-            Assert.IsNull(PessoaRepositorio.AtualizarNoBancoDados(p3));
+            PessoaRepositorio.AtualizarNoBancoDados(p3).Should().BeNull();
         }
 
         [Test, Order(8)]
         public void ApagarNoBancoDadosNullTest()
         {
-            Assert.IsNull(PessoaRepositorio.ApagarNoBancoDados(p2.Cpf));
+            PessoaRepositorio.ApagarNoBancoDados(p2.Cpf).Should().BeNull();
         }
 
         [Test, Order(9)]
         public void ApagarNoBancoDadosTest()
         {
-            Assert.IsNotNull(PessoaRepositorio.ApagarNoBancoDados(p1S.Cpf));
+            PessoaRepositorio.ApagarNoBancoDados(p1S.Cpf).Should().NotBeNull();
         }
-
         private string GetRandomizerDate() // feito para adequar a data gerada pelo Bogus ao meu formato de data esperado
         {
             DateTime localDate = DateTime.Now;
@@ -138,11 +137,3 @@ namespace Csharp_WebAPI_EF_MySql_Bogus_NUnit.Data
         }
     }
 }
-
-// .RuleFor(p => p.Cpf, f => new Bogus.Randomizer().Replace("###########"))
-// .RuleFor(p => p.DataNascimento, f => new Bogus.Randomizer().Replace("##/##/####"))
-// .RuleFor(p => p.DataNascimento, f => f.Date.Past(15))
-// PARA IMPRIMIR NO CONSOLE MENSGEMS DE DEBUG QUANDO EXECUTAR UM TESTE
-// TestContext.Out.WriteLine("Message to write to loOOOOOOOOOOOOOOg");
-// System.Console.WriteLine("ooooooiiiiii");
-// NUnit.Framework.TestContext.Progress.WriteLine("OOOOOOOOOOOOOO");    ESSSE FUNCIONOU
